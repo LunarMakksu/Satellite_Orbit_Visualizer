@@ -12,9 +12,16 @@ class Componants(object):
             self.lines = f.readlines()
             f.close()
 
+        #with splits
         self.line0 = self.lines[0].split()
         self.line1 = self.lines[1].split()
         self.line2 = self.lines[2].split()
+
+        #without
+        self.line0_TLE = self.lines[0]
+        self.line1_TLE = self.lines[1]
+        self.line2_TLE = self.lines[2]
+
 
         # Line 0
 
