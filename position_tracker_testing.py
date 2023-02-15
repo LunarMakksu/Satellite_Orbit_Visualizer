@@ -8,7 +8,7 @@ from TLETool_new import Componants
 url ="https://celestrak.org/NORAD/elements/gp.php?CATNR=48924"
 response = urllib.request.urlopen(url)
 lines = response.readlines()
-filepath = "Just_ONE_TLE_2.txt"
+filepath = "txt_files/Just_ONE_TLE_2.txt"
 path = Path(f'{filepath}')
 print(path.is_file())
 
