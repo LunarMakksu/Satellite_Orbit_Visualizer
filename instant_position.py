@@ -1,13 +1,11 @@
 import turtle
-import urllib.request
 from pyorbital.orbital import Orbital
-from pathlib import Path
 from datetime import datetime
 from TLETool_new import Componants
 from get_latest_TLE import latest_TLE
 
 
-filepath = "txt_files/Just_ONE_TLE_2.txt"
+filepath = "txt_files/Just_ONE_TLE.txt"
 all_yes = ['yes',  'Y', 'y', 'YES', 'Yes']
 y_n = input("Do you want to get the latest TLE? (Y/N) Bare in mind excessive downloads will result in an IP block.\n")
 if y_n in all_yes:
@@ -29,10 +27,10 @@ screen.setup(1280, 720)
 screen.setworldcoordinates(-180, -90, 180, 90)
 
 # load the world map image
-screen.bgpic("map.gif")
-screen.register_shape("fp.gif")
+screen.bgpic("resources/map.gif")
+screen.register_shape("resources/fp.gif")
 ff = turtle.Turtle()
-ff.shape("fp.gif")
+ff.shape("resources/fp.gif")
 ff.setheading(45)
 ff.penup()
 
@@ -48,6 +46,7 @@ if lon >= 0:
 else:
     E_or_W_lon = 'W'
 
+print(f"\nTLE used is from {tle.date_str}\n")
 print(f"Faraday-Phoenix is at lattitude: {round(lat, 3)} {N_or_S_lat} and longitude: {round(lon, 3)} {E_or_W_lon}")
 ff.goto(lon,lat)
 turtle.exitonclick()

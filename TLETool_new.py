@@ -1,4 +1,4 @@
-from datetime import datetime, date
+from datetime import datetime, date, timedelta
 import string                                                   # NEEDS DEBUGGING
 
 now = datetime.now()
@@ -18,8 +18,8 @@ class Componants(object):
         self.line2 = self.lines[2].split()
 
         #without
-        self.line0_TLE = self.lines[0]
-        self.line1_TLE = self.lines[1]
+        self.line0_TLE = self.lines[0].rstrip('\n')
+        self.line1_TLE = self.lines[1].rstrip('\n')
         self.line2_TLE = self.lines[2]
 
 
@@ -73,13 +73,17 @@ class Componants(object):
         power = int(len(str(time0)))
         t = (float(time0)*10**-power)*24
 
-        self.time_hour = str(t)[0:2]
+        self.time_hour = str(t)[0:2] #not 24hr
 
         self.time_minute = round((float(t)-float(self.time_hour))*60)
 
-        self.time = (f"{self.time_hour}:{self.time_minute}")
+        self.time = (f"{self.time_hour.rstrip('.')}:{self.time_minute}")
 
-        self.date_UK = (self.time, self.day, self.month, self.year)
+        self.epoch_2 = float(self.epoch)
+
+        self.epoch_datetime = datetime(1960, 1, 10, 12, 0, 0) + timedelta(days=self.epoch_2)
+
+        self.date_str = self.epoch_datetime.strftime('%d-%m-%Y %H:%M:%S')
 
 #----------------------------------------------------------------------------------------
 
