@@ -119,7 +119,14 @@ def plot3d():
     ax.set_ylabel('Latitude (degrees)')
     ax.set_title(f'Satellite Trajectory for {line0_TLE}')
 
-    ax.plot(longitudes, latitudes, altitudes, color='red', linewidth=2, linestyle='dotted')
+    lon_now, lat_now, alt_now = orb.get_lonlatalt(datetime.utcnow())
+    lon_now_plot = [lon_now, lon_now + 0.2]
+    lat_now_plot = [lat_now, lat_now + 0.2]
+    alt_now_plot = [alt_now, alt_now + 0.2]
+
+
+    line1, = ax.plot(longitudes, latitudes, altitudes, color='red', linewidth=2, linestyle='dotted')
+    line2, = ax.plot(lon_now_plot, lat_now_plot, alt_now_plot, color='blue', linewidth= 7, linestyle='solid')
 
     plt.show()
 
