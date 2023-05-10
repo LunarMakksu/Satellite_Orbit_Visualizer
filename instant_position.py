@@ -4,7 +4,6 @@ from pyorbital.orbital import Orbital
 from datetime import datetime
 from TLETool_new import Componants
 from get_latest_TLE import latest_TLE
-from daynight import Map
 import csv
 
 filepath = "txt_files/Just_ONE_TLE.txt"
@@ -28,12 +27,8 @@ screen = turtle.Screen()
 screen.setup(1280, 720)
 screen.setworldcoordinates(-180, -90, 180, 90)
 
-map = Map("resources/earth_nasa_day.png", "resources/earth_nasa_night.png")
-
-try:
-    screen.bgpic("resources/world-map.gif")
-except:
-    screen.bgpic("resources/map.gif")
+screen.bgpic("resources/map.gif")
+    
 screen.register_shape("resources/fp.gif")
 ff = turtle.Turtle()
 ff.shape("resources/fp.gif")
@@ -62,7 +57,7 @@ with open ("txt_files/lat&lons.csv", 'w') as log:
     csv_w = csv.writer(log, delimiter=',')
     csv_w.writerow(fieldnames)
     row = [lon, lat, datetime.utcnow(), tle.day, tle.month, tle.year]
-    csv_w.writerow(row)
+    csv_w.writerow(f"{row}\n")
 log.close()
 
 def writedata(lon, lat):

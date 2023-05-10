@@ -101,6 +101,6 @@ class Componants(object):
         self.eccentricity = self.line2[4]
         self.arg_of_perigee = self.line2[5]
         self.mean_anomaly = self.line2[6]
-        self.mean_motion = self.line2[7] # revs per day
+        self.mean_motion = float(self.line2[7]) # revs per day
         #self.rev_num = self.line2[8]# at epoch
         #checkSum2 = checkSum
